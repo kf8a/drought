@@ -1,7 +1,8 @@
 defmodule Drought.Drought do
   use Drought.Web, :model
 
-  @schema_prefix 'weather'
+  @schema_prefix "weather"
+  @primary_key :false
 
   schema "drought_index" do
     field :date, Ecto.Date

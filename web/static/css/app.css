@@ -1,1 +1,54 @@
 /* This file is for your main application css. */
+h1 {
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  text-align: center;
+ }
+
+ body {
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   margin: auto;
+   position: relative;
+   width: 960px;
+}
+
+.axis {
+  font: 2em;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis--x path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: wheat;
+  stroke-width: 1.5px;
+}
+
+.precip {
+  stroke: steelblue;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+form {
+  position: absolute;
+  right: 10px;
+  top: 10px;

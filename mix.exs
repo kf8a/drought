@@ -18,7 +18,7 @@ defmodule Drought.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Drought, []},
-     applications: [:prometheus, :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex]]
   end
 
@@ -37,7 +37,6 @@ defmodule Drought.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:prometheus_plugs, "~> 0.0.2"},
      {:cowboy, "~> 1.0"}]
   end
 

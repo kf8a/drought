@@ -19,9 +19,6 @@ defmodule Drought.Endpoint do
     plug Phoenix.CodeReloader
   end
 
-  plug Plug.PrometheusCollector, [labels: [:code, :method, :host, :scheme]]
-  plug Plug.PrometheusExporter, []
-
   plug Plug.RequestId
   plug Plug.Logger
 

@@ -12,6 +12,8 @@ defmodule Drought do
       supervisor(Drought.Repo, []),
       # Start the endpoint when the application starts
       supervisor(Drought.Endpoint, []),
+      # Start promethous server
+      # :prometheus.start
       # Start your own worker by calling: Drought.Worker.start_link(arg1, arg2, arg3)
       # worker(Drought.Worker, [arg1, arg2, arg3]),
     ]
