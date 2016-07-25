@@ -86,7 +86,7 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Cummulative Precipitation (inch)");
+      .text("Cummulative Precipitation (inches)");
 
       svg.append("path")
       .datum(data)

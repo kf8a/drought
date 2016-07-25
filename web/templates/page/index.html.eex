@@ -1,4 +1,4 @@
-<h1>Cummulative precipitation vs 30 normal precipitation at KBS</h1>
+<h1>KBS Cumulative Precipitation: Actual versus 30-year Mean</h1>
 <form>
   <label><input type="radio" autocomplete="off" checked="true" name="interval" value="annual" checked> Annual</label>
   <label><input type="radio" autocomplete="off" name="interval" value="growing"> Growing Season</label>
