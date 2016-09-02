@@ -22,9 +22,9 @@ import "phoenix_html"
 // import 'graph.js'
 
 
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
-  width = 980 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin = {top: 40, right: 20, bottom: 30, left: 50},
+    width = 980 - margin.left - margin.right,
+    height = 550 - margin.top - margin.bottom;
 
     var interval = "annual";
     var parseDate = d3.timeParse("%Y-%m-%d");
@@ -50,10 +50,10 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
     precips.defined(function(d) { return !isNaN(d[interval].precip); });
 
     var svg = d3.select("#graph").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var xaxis = d3.axisBottom(x);
     var yaxis = d3.axisLeft(y);
@@ -65,8 +65,6 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
         d["growing"] = parseValues(d["growing"]);
         d["annual"] = parseValues(d["annual"]);
       });
-
-      console.log(data);
 
       x.domain(d3.extent(data, function(d) { return d[interval].date; })).nice();;
       y.domain(d3.extent(data, function(d) { return d[interval].ytd; }));
@@ -89,13 +87,15 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
       .text("Cummulative Precipitation (inches)");
 
       svg.append("path")
-      .datum(data)
-      .attr("class", "line precip")
-      .attr("d", precips);
+         .datum(data)
+         .attr("class", "line precip")
+         .attr("data-legend", function(d) { return "current precip"})
+         .attr("d", precips);
 
       svg.append("path")
           .datum(data)
           .attr("class", "line normal")
+         .attr("data-legend", function(d) { return "normal precip"})
           .attr("d", normal);
 
       var precipFocus = svg.append("g")
@@ -175,6 +175,20 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
         t1.selectAll("path.normal").attr("d", normal);
         t1.selectAll("path.precip").attr("d", precips);
       }
+
+      var legend = svg.append("g")
+                      .attr("class","legend")
+                      .attr("transform","translate(50,150)")
+                      .style("font-size","12px")
+                      .call(d3.legend)
+
+       setTimeout(function() { 
+           legend
+             .style("font-size","20px")
+             .attr("data-style-padding",10)
+             .call(d3.legend)
+         },1000)
+
     });
 
     function parseValues(d) {
