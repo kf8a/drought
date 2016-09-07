@@ -86,16 +86,38 @@ var margin = {top: 40, right: 20, bottom: 30, left: 50},
       .style("text-anchor", "middle")
       .text("Cummulative Precipitation (inches)");
 
+      svg.append("line")
+         .attr("x1", 50)
+         .attr("y1", 40)
+         .attr("x2", 80)
+         .attr("y2", 40)
+         .attr("class","normal line")
+      svg.append("text")
+         .attr("y", 40)
+         .attr("x", 100)
+         .attr("dy", "5px")
+         .text("30 year normal precipitation");
+
+      svg.append("line")
+         .attr("x1", 50)
+         .attr("y1", 60)
+         .attr("x2", 80)
+         .attr("y2", 60)
+         .attr("class","precip line")
+      svg.append("text")
+         .attr("y", 60)
+         .attr("x", 100)
+         .attr("dy", "5px")
+         .text("current year precipitation");
+
       svg.append("path")
          .datum(data)
          .attr("class", "line precip")
-         .attr("data-legend", function(d) { return "current precip"})
          .attr("d", precips);
 
       svg.append("path")
           .datum(data)
           .attr("class", "line normal")
-         .attr("data-legend", function(d) { return "normal precip"})
           .attr("d", normal);
 
       var precipFocus = svg.append("g")
@@ -176,18 +198,6 @@ var margin = {top: 40, right: 20, bottom: 30, left: 50},
         t1.selectAll("path.precip").attr("d", precips);
       }
 
-      var legend = svg.append("g")
-                      .attr("class","legend")
-                      .attr("transform","translate(50,150)")
-                      .style("font-size","12px")
-                      .call(d3.legend)
-
-       setTimeout(function() { 
-           legend
-             .style("font-size","20px")
-             .attr("data-style-padding",10)
-             .call(d3.legend)
-         },1000)
 
     });
 

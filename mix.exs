@@ -4,7 +4,7 @@ defmodule Drought.Mixfile do
   def project do
     [app: :drought,
      version: "0.0.1",
-     elixir: "~> 1.2",
+     elixir: "~> 1.3",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
@@ -19,7 +19,7 @@ defmodule Drought.Mixfile do
   def application do
     [mod: {Drought, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :ssl]]
+                    :phoenix_ecto, :postgrex, :ssl, :prometheus_plugs, :prometheus_ex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +38,8 @@ defmodule Drought.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:exrm, "1.0.6"},
+     {:distillery, "~> 0.9"},
+     {:prometheus_plugs, "~> 0.9"}
 ]
   end
 

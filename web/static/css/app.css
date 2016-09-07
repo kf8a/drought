@@ -30,10 +30,11 @@ h1 {
 
 .line {
   fill: none;
-  stroke: wheat;
   stroke-width: 1.5px;
 }
-
+.normal {
+  stroke: wheat;
+}
 .precip {
   stroke: steelblue;
 }
@@ -57,5 +58,4 @@ form {
 .legend rect {
   fill: blue;
   stroke: black;
-  opacity: 0.8;
 }
