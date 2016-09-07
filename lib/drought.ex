@@ -6,6 +6,9 @@ defmodule Drought do
   def start(_type, _args) do
     import Supervisor.Spec
 
+    Prometheus.PlugsInstrumenter.setup()
+    Prometheus.PlugsExporter.setup()
+
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository

@@ -3,6 +3,9 @@ defmodule Drought.Endpoint do
 
   socket "/socket", Drought.UserSocket
 
+  plug Prometheus.PlugsInstrumenter
+  plug Prometheus.PlugsExporter
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
