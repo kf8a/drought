@@ -22,4 +22,4 @@ exclude_paths:
 - config
 - priv/repo
 - test
-
+- web/static/css/app.css
