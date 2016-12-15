@@ -16,7 +16,7 @@ exports.config = {
         before: [
           'web/static/vendor/jquery/jquery-3.1.0.min.js',
           'web/static/vendor/d3/d3.js',
-          'web/static/vendor/d3/d3.legend.js',
+          'web/static/vendor/d3/d3.legend.js'
         ]
       }
     },
