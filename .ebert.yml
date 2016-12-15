@@ -23,3 +23,4 @@ exclude_paths:
 - priv/repo
 - test
 - web/static/css/app.css
+- web/static/vendor/d3/d3.js
