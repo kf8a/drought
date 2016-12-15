@@ -16,7 +16,7 @@ defmodule Drought.DroughtView do
   end
 
   defp growing_date(drought) do
-    if (drought.growing_cumulative_precip_in != nil )  do
+    if drought.growing_cumulative_precip_in != nil do
       drought.date
     end
   end
