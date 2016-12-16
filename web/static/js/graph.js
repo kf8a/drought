@@ -80,38 +80,38 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
       .attr("x", 9)
       .attr("dy", ".35em");
 
-      var ytdFocus = svg.append("g")
-      .attr("class", "focus")
-      .style("display", "none");
+      var ytdFocus = svg.append('g')
+                        .attr('class', 'focus')
+                        .style('display', 'none');
 
-      ytdFocus.append("circle")
-      .attr("r", 4.5);
+      ytdFocus.append('circle')
+      .attr('r', 4.5);
 
-      var diffLine = svg.append("g")
-      .attr("class", "focus")
-      .style("display", "none");
+      var diffLine = svg.append('g')
+      .attr('class', 'focus')
+      .style('display', 'none');
 
-      diffLine.append("line")
-      .style("stroke", "black")
+      diffLine.append('line')
+      .style('stroke', 'black')
 
       // handle mouse events
-      var mouse_handler = svg.append("rect")
-      .attr("class", "overlay")
-      .attr("width", width)
-      .attr("height", height)
-      .on("mouseover", function() { 
-        precipFocus.style("display", null); 
-        ytdFocus.style("display", null);
-        diffLine.style("display", null);
+      var mouse_handler = svg.append('rect')
+      .attr('class', 'overlay')
+      .attr('width', width)
+      .attr('height', height)
+      .on('mouseover", function() { 
+        precipFocus.style('display', null); 
+        ytdFocus.style('display', null);
+        diffLine.style('display', null);
       })
-      .on("mouseout", function() { 
-        precipFocus.style("display", "none"); 
-        ytdFocus.style("display", "none");
-        diffLine.style("display","none")
+      .on('mouseout', function() { 
+        precipFocus.style('display', 'none'); 
+        ytdFocus.style('display', 'none');
+        diffLine.style('display','none')
       })
-      .on("mousemove", mousemove);
+      .on('mousemove', mousemove);
 
-      d3.selectAll("input").on("change", change);
+      d3.selectAll('input').on('change', change);
 
       function mousemove() {
         var x0 = x.invert(d3.mouse(this)[0]),
@@ -121,13 +121,13 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
                 d = x0 - d0.date > d1.date - x0 ? d1 : d0;
                 var diff = d[interval].precip - d[interval].ytd;
                 if (!isNaN(diff)) {
-                  precipFocus.attr("transform", "translate(" + x(d[interval].date) + "," + y(d[interval].precip) + ")");
-                  precipFocus.select("text").text(formatPrecip(diff));
-                  ytdFocus.attr("transform", "translate(" + x(d[interval].date) + "," + y(d[interval].ytd) + ")");
-                  diffLine.select("line").attr("x1", x(d[interval].date))
-                  .attr("x2", x(d[interval].date))
-                  .attr("y1", y(d[interval].precip))
-                  .attr("y2", y(d[interval].ytd));
+                  precipFocus.attr('transform', 'translate(' + x(d[interval].date) + ',' + y(d[interval].precip) + ')');
+                  precipFocus.select('text').text(formatPrecip(diff));
+                  ytdFocus.attr('transform', 'translate(' + x(d[interval].date) + ',' + y(d[interval].ytd) + ')');
+                  diffLine.select('line').attr('x1', x(d[interval].date))
+                  .attr('x2', x(d[interval].date))
+                  .attr('y1', y(d[interval].precip))
+                  .attr('y2', y(d[interval].ytd));
                 }
       };
 
@@ -135,30 +135,30 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
         interval = this.value;
 
         var t0 = svg.transition().duration(450);
-        t0.selectAll("path.normal").attr("d", normal);
-        t0.selectAll("path.precip").attr("d", precips);
+        t0.selectAll('path.normal').attr('d', normal);
+        t0.selectAll('path.precip').attr('d', precips);
 
         x.domain(d3.extent(data, function(d) { return d[interval].date; })).nice();
         y.domain(d3.extent(data, function(d) {return d[interval].ytd}));
         var t1 = t0.transition();
-        t1.selectAll("g.axis--x").call(xaxis);
-        t1.selectAll("g.axis--y").call(yaxis);
-        t1.selectAll("path.normal").attr("d", normal);
-        t1.selectAll("path.precip").attr("d", precips);
+        t1.selectAll('g.axis--x').call(xaxis);
+        t1.selectAll('g.axis--y').call(yaxis);
+        t1.selectAll('path.normal').attr('d', normal);
+        t1.selectAll('path.precip').attr('d', precips);
       }
     });
 
     function type(d) {
       d.date = parseTime(d.date);
-      d.annual = {}
-      d.growing = {}
-      d["annual"].date = d.date;
-      d["annual"].ytd = parseFloat(d.normal_cumulative_precip_in);
-      d["annual"].precip = parseFloat(d.cum_precip_in);
+      d.annual = {};
+      d.growing = {};
+      d['annual'].date = d.date;
+      d['annual'].ytd = parseFloat(d.normal_cumulative_precip_in);
+      d['annual'].precip = parseFloat(d.cum_precip_in);
       if (!isNaN(parseFloat(d.growing_cumulative_precip_in))) {
-        d["growing"].date = d.date;
-        d["growing"].ytd = parseFloat(d.growing_normal_cumulative_precip_in);
-        d["growing"].precip = parseFloat(d.growing_cumulative_precip_in);
+        d['growing'].date = d.date;
+        d['growing'].ytd = parseFloat(d.growing_normal_cumulative_precip_in);
+        d['growing'].precip = parseFloat(d.growing_cumulative_precip_in);
       }
       return d;
     }
