@@ -66,8 +66,8 @@ d3.json("/drought/drought", function(error, data) {
         d["annual"] = parseValues(d["annual"]);
       });
 
-      x.domain(d3.extent(data, function(d) { return d[interval].date; })).nice();;
-      y.domain(d3.extent(data, function(d) { return d[interval].ytd; }));
+      x.domain(d3.extent(data, function(d) { return d[interval].date; })).nice();
+      y.domain(d3.extent(data, function(d) { return d[interval].ytd; })).nice();
 
       svg.append("g")
       .attr("class", "axis axis--x")
@@ -190,7 +190,7 @@ d3.json("/drought/drought", function(error, data) {
         t0.selectAll("path.precip").attr("d", precips);
 
         x.domain(d3.extent(data, function(d) { return d[interval].date; })).nice();
-        y.domain(d3.extent(data, function(d) {return d[interval].ytd}));
+        y.domain(d3.extent(data, function(d) {return d[interval].ytd})).nice();
         var t1 = t0.transition();
         t1.selectAll("g.axis--x").call(xaxis);
         t1.selectAll("g.axis--y").call(yaxis);
