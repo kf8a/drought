@@ -58,7 +58,7 @@ var margin = {top: 40, right: 20, bottom: 30, left: 50},
     var xaxis = d3.axisBottom(x);
     var yaxis = d3.axisLeft(y);
 
-    d3.json("/drought", function(error, data) {
+d3.json("/drought/drought", function(error, data) {
       if (error) throw error;
 
       data.forEach(function(d) {
@@ -150,13 +150,13 @@ var margin = {top: 40, right: 20, bottom: 30, left: 50},
       .attr("class", "overlay")
       .attr("width", width)
       .attr("height", height)
-      .on("mouseover", function() { 
-        precipFocus.style("display", null); 
+      .on("mouseover", function() {
+        precipFocus.style("display", null);
         ytdFocus.style("display", null);
         diffLine.style("display", null);
       })
-      .on("mouseout", function() { 
-        precipFocus.style("display", "none"); 
+      .on("mouseout", function() {
+        precipFocus.style("display", "none");
         ytdFocus.style("display", "none");
         diffLine.style("display","none")
       })

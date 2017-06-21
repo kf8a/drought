@@ -13,7 +13,7 @@ defmodule Drought.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Drought do
+  scope "/drought", Drought do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index

@@ -13,10 +13,12 @@ use Mix.Config
 # which you typically run after static files are built.
 config :drought, Drought.Endpoint,
   http: [port: 8888, compress: true],
-  url: [host: "oshtemo.kbs.msu.edu", port: 8082],
+  url: [host: "lter.kbs.msu.edu", port: 443],
   root: ".",
   server: true,
-  cache_static_manifest: "priv/static/manifest.json"
+  cache_static_manifest: "priv/static/manifest.json",
+  static_url: [path: "/drought"]
+
 
 # Do not print debug messages in production
 config :logger, level: :info

@@ -11,6 +11,7 @@ config :drought, Drought.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
+  static_url: [path: "/drought"],
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
                     cd: Path.expand("../", __DIR__)]]
 
