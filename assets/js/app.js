@@ -103,17 +103,13 @@ function update_plot(current_year) {
 
   d3.json("/drought?year=" + current_year).then((data) => {
 
-  console.log("got data");
-
-  console.log(data);
   data.forEach(function(d) {
     d["growing"] = parseValues(d["growing"]);
     d["annual"] = parseValues(d["annual"]);
   });
-  console.log(data);
 
   // x.domain(d3.extent(data, function(d) { return d[interval].date; })).nice();
-  x.domain([new Date(current_year + "-1-1"), new Date(current_year + "-12-31")]).nice();
+  x.domain([new Date(current_year, 0, 1), new Date(current_year, 11, 31)]).nice();
   let y_ytd = d3.extent(data, function(d) { return d[interval].ytd; })
   let y_precip = d3.extent(data, function(d) { return d[interval].precip; })
 
